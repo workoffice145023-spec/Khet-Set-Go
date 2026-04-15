@@ -1,0 +1,139 @@
+# Khet-Set-Go — Crop Disease Detection System (CRPDS)
+
+AI-powered crop disease detection for Rice, Wheat, and Sugarcane, built for smallholder farmers with zero recurring cost.
+
+---
+
+## The Problem
+
+Standard detection tools fail in real-world farm conditions because:
+
+- They analyze irrelevant background data — soil, shadows, weeds — instead of the plant
+- Basic CNNs process noisy data, leading to high misdiagnosis rates
+- Existing mobile apps lack the computational depth for reliable, high-precision detection
+
+---
+
+## The Solution
+
+CRPDS uses a surgical masking and hybrid cloud pipeline approach:
+
+1. **SAM (Segment Anything Model)** isolates the infected leaf from all background noise
+2. A **CNN classifier** runs on the clean masked image for accurate disease identification
+3. A **FastAPI backend** hosted on Google Colab and tunnelled via **ngrok** handles inference, bringing professional-grade AI to any standard Android phone
+
+---
+
+## Process Flow
+
+```
+CAPTURE  ->  SEGMENT  ->  CLASSIFY  ->  RESULT
+
+Camera input    SAM isolates     CNN identifies     Confidence score
+on-device       crop region      disease class      + AI feedback
+```
+
+---
+
+## Supported Crops and Diseases
+
+**Wheat**
+- Yellow Rust
+- Brown Rust
+- Healthy
+
+**Rice**
+- Bacterial Blight
+- Blast
+- Brown Spot
+
+**Sugarcane**
+- Red Rot
+- Rust
+- Mosaic
+
+---
+
+## Tech Stack
+
+- Mobile App: Android Studio
+- Segmentation: SAM (Segment Anything Model)
+- Classification: CNN (Convolutional Neural Network)
+- Backend: FastAPI
+- Tunnel: ngrok
+- Runtime: Google Colab
+- Dataset: Kaggle + Custom Dataset
+
+---
+
+## Results
+
+*Wheat* — Yellow Rust, Brown Rust, Healthy
+Accuracy: 98%
+
+*Rice* — Bacterial Blight, Blast, Brown Spot
+Accuracy: 95%
+
+*Sugarcane* — Red Rot, Rust, Mosaic
+Accuracy: 97%
+
+## Architecture Overview
+
+```
+Android App
+    |
+    v
+Capture Image
+    |
+    v
+SAM — Segment and Mask Leaf
+    |
+    v
+FastAPI Backend via ngrok
+    |
+    v
+CNN on Google Colab — Disease Classification
+    |
+    v
+Confidence Score + AI Feedback displayed on App
+```
+
+---
+
+## Why CRPDS Over Alternatives
+
+**Background Isolation**
+- Cloud Apps: No
+- Basic CNN: No
+- CRPDS: Yes
+
+**Real-time Inference**
+- Cloud Apps: Yes
+- Basic CNN: Yes
+- CRPDS: Yes
+
+**Low-resource Device Support**
+- Cloud Apps: No
+- Basic CNN: Partial
+- CRPDS: Yes
+
+**Multi-disease Classification**
+- Cloud Apps: Yes
+- Basic CNN: Partial
+- CRPDS: Yes
+
+---
+
+## Impact
+
+- 500M+ smallholder farmers globally stand to benefit
+- 70% of food-insecure populations in South Asia depend on crops like rice and wheat
+- Zero recurring cost to the farmer post-installation
+
+**UN Sustainable Development Goals Addressed**
+
+- SDG 2 — Zero Hunger: Early disease detection protects yield and food security
+- SDG 9 — Industry and Innovation: Cloud AI accessible on standard smartphones in rural areas
+- SDG 13 — Climate Action: Real-time monitoring helps farmers adapt to emerging disease patterns
+
+---
